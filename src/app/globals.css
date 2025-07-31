@@ -1,26 +1,190 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
+  /* Main colors */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+  --primary: #5221E6;
+  --primary-20: rgba(82, 33, 230, 0.2);
+  --secondary: #666666;
+  --accent: #FF8A56;
+  
+  /* Supporting colors - emphasizing yellow and green */
+  --yellow: #FFC56F;
+  --green: #00CF95;
+  --blue: #0077B5;
+  --purple: #5221E6;
+  --orange: #FF8A56;
+  
+  /* Light background variants */
+  --yellow-light: #FFF6E9;
+  --green-light: #E6FFF7;
+  --purple-light: #F0E7FF;
+  --orange-light: #FFF0EB;
+  
+  /* Dark variants */
+  --purple-dark: #2A1B70;
+  --orange-dark: #662200;
+  --pink: #FF7474;
+  --blue-light: #61DCFF;
+  
+  /* UI colors */
+  --muted: #F8F9FA;
+  --border: #EAEAEA;
+  --card-bg: #FFFFFF;
+  --input-bg: #F5F5F5;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  /* Main colors */
+  --background: #121212;
+  --foreground: #ffffff;
+  --primary: #7848FF;
+  --primary-20: rgba(120, 72, 255, 0.2);
+  --secondary: #A0A0A0;
+  --accent: #FF8A56;
+  
+  /* Supporting colors adapted for dark mode - still emphasizing yellow and green */
+  --yellow: #FFC56F;
+  --green: #00CF95;
+  --blue: #1DA1F2;
+  --purple: #7848FF;
+  --orange: #FF8A56;
+  
+  /* Light background variants for dark mode */
+  --yellow-light: #332E1F;
+  --green-light: #1F332B;
+  --purple-light: #2A1F3D;
+  --orange-light: #3D2319;
+  
+  /* Dark variants */
+  --purple-dark: #4F31D8;
+  --orange-dark: #FF6B2B;
+  --pink: #FF7474;
+  --blue-light: #61DCFF;
+  
+  /* UI colors */
+  --muted: #1E1E1E;
+  --border: #333333;
+  --card-bg: #1E1E1E;
+  --input-bg: #2A2A2A;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container {
+    @apply max-w-[1200px] mx-auto px-6;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg px-8 py-3 font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-[#4016C0];
+  }
+
+  .btn-secondary {
+    @apply bg-green text-white hover:bg-[#00B383];
+  }
+
+  .btn-accent {
+    @apply bg-yellow text-black hover:bg-[#FFB649];
+  }
+
+  .btn-outline {
+    @apply border border-border bg-transparent hover:bg-muted;
+  }
+
+  .section {
+    @apply py-24;
+  }
+
+  .heading {
+    @apply font-poppins font-bold;
+  }
+
+  .card {
+    @apply rounded-xl overflow-hidden bg-card-bg shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .input {
+    @apply bg-input-bg border border-border rounded-lg p-3 w-full transition-all duration-200 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary-20;
+  }
+}
+
+@layer utilities {
+  /* Gradient definitions */
+  .purple-gradient {
+    background: linear-gradient(to right bottom, var(--primary), #A45EFF);
+  }
+
+  .orange-gradient {
+    background: linear-gradient(to right bottom, #FF5E00, var(--accent));
+  }
+
+  .yellow-gradient {
+    background: linear-gradient(to right bottom, #FFBA49, var(--yellow));
+  }
+
+  .green-gradient {
+    background: linear-gradient(to right bottom, #00B383, var(--green));
+  }
+
+  .pink-gradient {
+    background: linear-gradient(to right bottom, #FF5757, var(--pink));
+  }
+
+  .blue-gradient {
+    background: linear-gradient(to right bottom, #3DB9FF, var(--blue-light));
+  }
+
+  .gradient-text {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    display: inline-block;
+  }
+
+  /* Themed elements */
+  .yellow-bg {
+    @apply bg-yellow-light;
+  }
+
+  .green-bg {
+    @apply bg-green-light;
+  }
+  
+  .purple-bg {
+    @apply bg-purple-light;
+  }
+  
+  .orange-bg {
+    @apply bg-orange-light;
+  }
+
+  .yellow-border {
+    @apply border-2 border-yellow;
+  }
+
+  .green-border {
+    @apply border-2 border-green;
+  }
+  
+  .purple-border {
+    @apply border-2 border-purple;
+  }
+  
+  .orange-border {
+    @apply border-2 border-accent;
+  }
 }
