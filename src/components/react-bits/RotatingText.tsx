@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import type { MotionProps } from 'framer-motion';
 
 interface RotatingTextProps {
   texts: string[];
   mainClassName?: string;
   splitLevelClassName?: string;
   staggerFrom?: 'first' | 'last' | 'center';
-  initial?: any;
-  animate?: any;
-  exit?: any;
-  transition?: any;
+  initial?: Record<string, any>;
+  animate?: Record<string, any>;
+  exit?: Record<string, any>;
+  transition?: Record<string, any>;
   staggerDuration?: number;
   rotationInterval?: number;
 }
@@ -66,18 +67,18 @@ const RotatingText: React.FC<RotatingTextProps> = ({
               key={`${currentIndex}-${index}`}
               className={`inline-block ${splitLevelClassName}`}
               variants={{
-                initial: { ...initial },
+                initial: initial || {},
                 animate: {
-                  ...animate,
+                  ...(animate as object || {}),
                   transition: {
-                    ...transition,
+                    ...(transition || {}),
                     delay: getStaggerOrder(index, letters.length),
                   },
                 },
                 exit: {
-                  ...exit,
+                  ...(exit as object || {}),
                   transition: {
-                    ...transition,
+                    ...(transition || {}),
                     delay: getStaggerOrder(index, letters.length),
                   },
                 },
