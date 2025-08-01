@@ -69,9 +69,13 @@ export default function About() {
             className="relative"
           >
             <div className="relative rounded-lg overflow-hidden bg-green-light bg-opacity-30">
-              <div className="aspect-[4/3] w-full h-full flex items-center justify-center">
-                <div className="w-3/4 h-3/4 rounded-lg bg-green-gradient flex items-center justify-center text-6xl font-bold text-white">
-                  M
+              <div className="aspect-[4/3] w-full h-full flex items-center justify-center p-8">
+                <div className="w-full h-full rounded-lg bg-green-gradient flex items-center justify-center overflow-hidden">
+                  <img 
+                    src="/coding-man.png" 
+                    alt="Coding illustration"
+                    className="w-auto h-auto max-w-full max-h-full object-contain"
+                  />
                 </div>
               </div>
             </div>

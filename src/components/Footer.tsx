@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { FiGithub, FiLinkedin, FiTwitter, FiDribbble, FiArrowUp } from 'react-icons/fi';
+import { SiLeetcode } from 'react-icons/si';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -21,7 +22,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://github.com"
+                href="https://github.com/freakyash11"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-secondary hover:text-primary transition-colors"
@@ -30,13 +31,13 @@ export default function Footer() {
                 <FiGithub />
               </a>
               <a
-                href="https://dribbble.com"
+                href="https://leetcode.com/u/kuwarbiyash/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-secondary hover:text-primary transition-colors"
                 aria-label="Dribbble"
               >
-                <FiDribbble />
+                <SiLeetcode />
               </a>
               <a
                 href="https://twitter.com"
@@ -48,7 +49,7 @@ export default function Footer() {
                 <FiTwitter />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/yash-kuwarbi/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-secondary hover:text-primary transition-colors"
@@ -83,9 +84,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#testimonials" className="text-secondary hover:text-primary transition-colors">
+                {/* <Link href="#testimonials" className="text-secondary hover:text-primary transition-colors">
                   Testimonials
-                </Link>
+                </Link> */}
               </li>
               <li>
                 <Link href="#contact" className="text-secondary hover:text-primary transition-colors">
@@ -101,18 +102,18 @@ export default function Footer() {
               <li className="text-secondary">
                 <span className="font-medium text-foreground block">Email:</span>
                 <a href="mailto:mark@example.com" className="hover:text-primary transition-colors">
-                  mark@example.com
+                  kuwarbiyash@gmail.com
                 </a>
               </li>
               <li className="text-secondary">
                 <span className="font-medium text-foreground block">Phone:</span>
                 <a href="tel:+11234567890" className="hover:text-primary transition-colors">
-                  +1 (123) 456-7890
+                  +91 7669567755
                 </a>
               </li>
               <li className="text-secondary">
                 <span className="font-medium text-foreground block">Address:</span>
-                San Francisco, California
+                New Delhi, India
               </li>
             </ul>
           </div>
