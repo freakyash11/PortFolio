@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiArrowDown, FiArrowRight, FiGithub, FiLinkedin, FiTwitter, FiDownload, FiCode } from 'react-icons/fi';
+import { FiArrowDown, FiArrowRight, FiGithub, FiLinkedin, FiTwitter, FiDownload } from 'react-icons/fi';
 import { SiLeetcode } from 'react-icons/si';
 import SplitText from './SplitText';
 import RotatingText from './react-bits/RotatingText';

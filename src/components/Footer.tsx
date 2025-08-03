@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FiGithub, FiLinkedin, FiTwitter, FiDribbble, FiArrowUp } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiTwitter, FiArrowUp } from 'react-icons/fi';
 import { SiLeetcode } from 'react-icons/si';
 
 export default function Footer() {

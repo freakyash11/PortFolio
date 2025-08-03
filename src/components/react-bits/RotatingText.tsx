@@ -7,10 +7,32 @@ interface RotatingTextProps {
   mainClassName?: string;
   splitLevelClassName?: string;
   staggerFrom?: 'first' | 'last' | 'center';
-  initial?: Record<string, any>;
-  animate?: Record<string, any>;
-  exit?: Record<string, any>;
-  transition?: Record<string, any>;
+  initial?: {
+    y?: string | number;
+    opacity?: number;
+    scale?: number;
+    rotate?: number;
+  };
+  animate?: {
+    y?: string | number;
+    opacity?: number;
+    scale?: number;
+    rotate?: number;
+  };
+  exit?: {
+    y?: string | number;
+    opacity?: number;
+    scale?: number;
+    rotate?: number;
+  };
+  transition?: {
+    duration?: number;
+    type?: 'tween' | 'spring';
+    ease?: [number, number, number, number];
+    delay?: number;
+    damping?: number;
+    stiffness?: number;
+  };
   staggerDuration?: number;
   rotationInterval?: number;
 }

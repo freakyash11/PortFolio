@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FiMenu, FiX, FiMoon, FiSun } from 'react-icons/fi';
@@ -130,7 +130,7 @@ export default function Navbar() {
             }}
             className="btn btn-secondary"
           >
-            Let's Talk
+            Let&apos;s Talk
           </button>
         </div>
 
