@@ -69,7 +69,7 @@ export default function Hero() {
                 View Work <FiArrowRight className="ml-2" />
               </Link>
               <a 
-                href="https://drive.google.com/file/d/1-MOIirCeYvMm2JDMzw_0GJ-d376pBR7r/view?usp=sharing" 
+                href="https://drive.google.com/file/d/1QU_D89slHVLkGCkhD531N9xxKsvNQ-cB/view?usp=sharing" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="btn btn-accent hover:bg-yellow-dark transition-colors"

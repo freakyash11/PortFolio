@@ -1,7 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { FiBook, FiBriefcase } from 'react-icons/fi';
+import { useRef } from 'react';
 
 const educationData = [
   {
@@ -27,11 +28,6 @@ const educationData = [
 ];
 
 const workData = [
-  // {
-  //   period: '2018-2024',
-  //   company: 'Insightlancer',
-  //   position: 'Master in Visual Arts'
-  // },
   {
     period: 'Jan 2025 - Present',
     company: 'SaralTech',
@@ -46,9 +42,112 @@ const workData = [
   }
 ];
 
-export default function Education() {
+// Type definitions
+interface EducationItem {
+  period: string;
+  institution: string;
+  degree: string;
+  stream?: string;
+  percentage: string;
+}
+
+interface WorkItem {
+  period: string;
+  company: string;
+  position: string;
+  techstack: string;
+}
+
+interface TimelineItemProps {
+  item: EducationItem | WorkItem;
+  index: number;
+  isWork?: boolean;
+}
+
+// Timeline Item Component with scroll animation
+const TimelineItem = ({ item, index, isWork = false }: TimelineItemProps) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 1", "end 0"]
+  });
+
+  // Transform scroll progress - beads move downward as you scroll down
+  const beadY = useTransform(scrollYProgress, [0, 1], [0, 40]);
+  const beadScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.2, 1]);
+  const beadOpacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [1, 1, 1, 0.8]);
+
   return (
-    <section id="education" className="section bg-muted">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="border-l-2 border-yellow pl-6 relative"
+    >
+      <motion.div 
+        className="absolute w-3 h-3 bg-yellow rounded-full -left-[7px] top-1 shadow-lg"
+        style={{ 
+          y: beadY,
+          scale: beadScale,
+          opacity: beadOpacity
+        }}
+        whileHover={{ scale: 1.5 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      >
+        {/* Glowing effect */}
+        <motion.div 
+          className="absolute inset-0 bg-yellow rounded-full"
+          animate={{ 
+            boxShadow: [
+              "0 0 0 0 rgba(245, 158, 11, 0.7)",
+              "0 0 0 8px rgba(245, 158, 11, 0)",
+              "0 0 0 0 rgba(245, 158, 11, 0)"
+            ]
+          }}
+          transition={{ 
+            duration: 2, 
+            repeat: Infinity, 
+            repeatType: "loop" 
+          }}
+        />
+      </motion.div>
+      
+      <span className="text-sm text-secondary">{item.period}</span>
+      <h4 className="heading text-xl mt-1">
+        {isWork ? (item as WorkItem).company : (item as EducationItem).degree}
+      </h4>
+      <p className="text-secondary">
+        {isWork ? (item as WorkItem).position : (item as EducationItem).stream}
+      </p>
+      {!isWork && (
+        <>
+          <p className="text-secondary">{(item as EducationItem).institution}</p>
+          <p className="text-secondary">{(item as EducationItem).percentage}</p>
+        </>
+      )}
+      {isWork && (
+        <p className="text-secondary text-md md:text-base">
+          <span className="font-bold">Tech Stack:</span> {(item as WorkItem).techstack}
+        </p>
+      )}
+    </motion.div>
+  );
+};
+
+export default function Education() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 0.8", "end 0.2"]
+  });
+
+  // Create a more pronounced floating effect for the entire timeline
+  const timelineY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+
+  return (
+    <section id="education" className="section bg-muted" ref={containerRef}>
       <div className="container">
         <div className="text-center mb-16">
           <motion.span
@@ -75,7 +174,10 @@ export default function Education() {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          style={{ y: timelineY }}
+        >
           {/* Education Column */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -93,21 +195,12 @@ export default function Education() {
 
             <div className="space-y-8">
               {educationData.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="border-l-2 border-yellow pl-6 relative"
-                >
-                  <div className="absolute w-3 h-3 bg-yellow rounded-full -left-[7px] top-1"></div>
-                  <span className="text-sm text-secondary">{item.period}</span>
-                  <h4 className="heading text-xl mt-1">{item.degree}</h4>
-                  <p className="text-secondary">{item.stream}</p>
-                  <p className="text-secondary">{item.institution}</p>
-                  <p className="text-secondary">{item.percentage}</p>
-                </motion.div>
+                <TimelineItem 
+                  key={index} 
+                  item={item} 
+                  index={index} 
+                  isWork={false}
+                />
               ))}
             </div>
           </motion.div>
@@ -129,25 +222,17 @@ export default function Education() {
 
             <div className="space-y-8">
               {workData.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="border-l-2 border-yellow pl-6 relative"
-                >
-                  <div className="absolute w-3 h-3 bg-yellow rounded-full -left-[7px] top-1"></div>
-                  <span className="text-sm text-secondary">{item.period}</span>
-                  <h4 className="heading text-xl mt-1">{item.company}</h4>
-                  <p className="text-secondary">{item.position}</p>
-                  <p className="text-secondary text-md md:text-base"><span className="font-bold">Tech Stack:</span> {item.techstack}</p>
-                </motion.div>
+                <TimelineItem 
+                  key={index} 
+                  item={item} 
+                  index={index} 
+                  isWork={true}
+                />
               ))}
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
-} 
+}
