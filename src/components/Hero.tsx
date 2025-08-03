@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import { FiArrowDown, FiArrowRight, FiGithub, FiLinkedin, FiTwitter, FiDownload } from 'react-icons/fi';
 import { SiLeetcode } from 'react-icons/si';
@@ -46,7 +45,7 @@ export default function Hero() {
                 className="block mb-2"
               />
               <div className="flex items-center flex-wrap">
-                <span className="mr-2">I'm</span>
+                <span className="mr-2">I&apos;m</span>
                 <RotatingText
                   texts={['Problem Solver', 'Developer', 'Tech Enthusiast']}
                   mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"

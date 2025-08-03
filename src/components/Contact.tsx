@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiMail, FiPhone, FiMapPin, FiSend } from 'react-icons/fi';
+import { FiMail, FiPhone, FiMapPin, FiSend, FiCheck, FiX } from 'react-icons/fi';
 import emailjs from '@emailjs/browser';
 
 emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
@@ -67,11 +67,15 @@ ${formData.message}
       console.log('Email sent successfully:', result);
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-      alert('Thank you for your message! I will get back to you soon.');
+      
+      // Auto-clear success message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
     } catch (error) {
       console.error('Error sending email:', error);
       setSubmitStatus('error');
-      alert('Failed to send message. Please check console for details and try again later.');
+      
+      // Auto-clear error message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
     } finally {
       setIsSubmitting(false);
     }
@@ -91,7 +95,7 @@ ${formData.message}
             transition={{ duration: 0.5 }}
             className="heading text-3xl md:text-4xl mb-6"
           >
-            Let's Work Together
+            Let&apos;s Work Together
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -101,7 +105,7 @@ ${formData.message}
             className="text-secondary text-lg"
           >
             Have a project in mind or want to say hello? Feel free to reach out. 
-            I'd love to hear from you and discuss how we can work together.
+            I&apos;d love to hear from you and discuss how we can work together.
           </motion.p>
         </div>
 
@@ -116,8 +120,8 @@ ${formData.message}
             <div>
               <h3 className="heading text-2xl mb-6">Contact Information</h3>
               <p className="text-secondary mb-8">
-                Fill up the form and I'll get back to you as soon as possible.
-                Let's create something amazing together!
+                Fill up the form and I&apos;ll get back to you as soon as possible.
+                Let&apos;s create something amazing together!
               </p>
               
               <div className="space-y-6">
@@ -158,8 +162,6 @@ ${formData.message}
                 </div>
               </div>
             </div>
-            
-
           </motion.div>
           
           <motion.div
@@ -171,6 +173,21 @@ ${formData.message}
           >
             <form onSubmit={handleSubmit} className="bg-background rounded-xl p-8 shadow-lg">
               <h3 className="heading text-2xl mb-6">Send a Message</h3>
+              
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <div className="mb-6 p-4 bg-green-100 border border-green-300 rounded-lg flex items-center text-green-700">
+                  <FiCheck className="mr-2" />
+                  <span>Thank you for your message! I will get back to you soon.</span>
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="mb-6 p-4 bg-red-100 border border-red-300 rounded-lg flex items-center text-red-700">
+                  <FiX className="mr-2" />
+                  <span>Failed to send message. Please try again later.</span>
+                </div>
+              )}
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>

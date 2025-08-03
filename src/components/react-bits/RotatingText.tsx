@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import type { MotionProps } from 'framer-motion';
 
 interface RotatingTextProps {
   texts: string[];

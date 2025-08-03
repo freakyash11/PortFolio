@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { FiCode, FiServer, FiDatabase, FiCloud } from 'react-icons/fi';
+import Image from 'next/image';
 
 const services = [
   {
@@ -71,9 +72,11 @@ export default function About() {
             <div className="relative rounded-lg overflow-hidden bg-green-light bg-opacity-30">
               <div className="aspect-[4/3] w-full h-full flex items-center justify-center p-8">
                 <div className="w-full h-full rounded-lg bg-green-gradient flex items-center justify-center overflow-hidden">
-                  <img 
+                  <Image 
                     src="/coding-man.png" 
                     alt="Coding illustration"
+                    width={400}
+                    height={300}
                     className="w-auto h-auto max-w-full max-h-full object-contain"
                   />
                 </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowLeft, FiArrowRight, FiStar } from 'react-icons/fi';
 
@@ -41,14 +41,7 @@ const testimonials = [
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
-  const [width, setWidth] = useState(0);
   const slideRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (slideRef.current) {
-      setWidth(slideRef.current.scrollWidth - slideRef.current.offsetWidth);
-    }
-  }, []);
 
   const nextSlide = () => {
     setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
@@ -81,7 +74,7 @@ export default function Testimonials() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-secondary text-lg"
           >
-            Client satisfaction is my top priority. Here's what some of my clients have to say about 
+            Client satisfaction is my top priority. Here&apos;s what some of my clients have to say about 
             working together on their projects.
           </motion.p>
         </div>
@@ -160,4 +153,4 @@ export default function Testimonials() {
       </div>
     </section>
   );
-} 
+}

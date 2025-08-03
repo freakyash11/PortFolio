@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
+import Image from 'next/image';
 
 // Sample project data
 const projects = [
@@ -133,10 +134,12 @@ export default function Projects() {
               className="bg-muted rounded-lg overflow-hidden hover:shadow-lg transition-shadow group"
             >
               <div className="aspect-video relative overflow-hidden">
-                <img 
+                <Image 
                   src={project.imageUrl}
                   alt={project.title}
                   className="w-full h-full object-cover"
+                  width={640}
+                  height={360}
                 />
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                   <div className="flex gap-3">

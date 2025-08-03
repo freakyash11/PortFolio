@@ -5,8 +5,6 @@ import {
   FiLayout,
   FiPenTool,
   FiCode,
-  FiSmartphone,
-  FiDatabase,
   FiTool,
 } from 'react-icons/fi';
 
@@ -76,8 +74,8 @@ export default function Skills() {
           </div>
           <h2 className="heading text-3xl md:text-4xl mb-4">Skills & Expertise</h2>
           <p className="text-secondary max-w-2xl mx-auto">
-            I've developed expertise in various design tools and technologies throughout my career.
-            Here's an overview of my skills and proficiency levels.
+            I&apos;ve developed expertise in various design tools and technologies throughout my career.
+            Here&apos;s an overview of my skills and proficiency levels.
           </p>
         </motion.div>
 

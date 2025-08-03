@@ -185,7 +185,7 @@ export default function Navbar() {
                 setIsOpen(false);
               }}
             >
-              Let's Talk
+              Let&apos;s Talk
             </button>
           </div>
         </motion.div>
