@@ -9,6 +9,16 @@ import Image from 'next/image';
 const projects = [
   {
     id: 1,
+    title: 'Docsy',
+    category: 'FullStack',
+    description: 'It is a seamless, real-time collaborative writing environment where multiple users can securely create, edit, and manage documents together simultaneously.',
+    technologies: ['MERN', 'Socket.Io', 'Clerk', 'SendGrid'],
+    liveUrl: 'https://docsy-client.vercel.app/',
+    githubUrl: 'https://github.com/freakyash11/docsy',
+    imageUrl: '/projects/Docsy.png', // Add your image path here
+  },
+  {
+    id: 2,
     title: 'Horizone Travel Blogs',
     category: 'FullStack',
     description: 'It is a dynamic travel blog platform featuring AI-generated content, helping users explore destinations, share experiences, and discover unique travel stories effortlessly.',
@@ -18,7 +28,7 @@ const projects = [
     imageUrl: '/projects/Blog.png', // 5-second preview animation
   },
   {
-    id: 2,
+    id: 3,
     title: 'PrepMe',
     category: 'FullStack',
     description: 'Prepwise is a sleek Next.js-based platform for job interview preparation, featuring AI integration, Firebase authentication, TailwindCSS styling, and Vapi voice agents',
@@ -28,7 +38,7 @@ const projects = [
     imageUrl: '/projects/prepMe.png', // Interactive demo animation
   },
   {
-    id: 3,
+    id: 4,
     title: 'Velvet',
     category: 'Designing',
     description: 'A visually stunning cocktail website built with React, Tailwind CSS, and GSAP, featuring scroll-driven animations, SplitText reveals, parallax effects, pinned sections, video syncing, carousels, and a fully responsive design.',
@@ -37,16 +47,6 @@ const projects = [
     githubUrl: 'https://github.com/freakyash11/gsap_cocktails.git',
     imageUrl: '/projects/Velvet.gif', // Add your image path here
   },
-  // {
-  //   id: 4,
-  //   title: 'Fitness App',
-  //   category: 'Mobile Development',
-  //   description: 'A mobile application that helps users track their workouts, nutrition, and fitness goals.',
-  //   technologies: ['React Native', 'Firebase', 'Redux'],
-  //   liveUrl: '#',
-  //   githubUrl: '#',
-  //   imageUrl: '/projects/fitness-app.jpg', // Add your image path here
-  // },
   // {
   //   id: 5,
   //   title: 'Brand Identity',

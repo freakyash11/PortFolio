@@ -3,31 +3,37 @@
 import { motion } from 'framer-motion';
 import { FiCode, FiServer, FiDatabase, FiCloud } from 'react-icons/fi';
 import Image from 'next/image';
+import SpotlightCard from './react-bits/SpotlightCard';
+import CountUp from './react-bits/CountUp';
 
 const services = [
   {
     icon: <FiServer className="text-2xl" />,
     title: 'AI-Powered Web Applications',
     description: 'Integrate AI tools to enhance user interaction and automation.',
-    colorClass: 'bg-purple-gradient'
+    colorClass: 'bg-purple-gradient',
+    spotlightColor: 'rgba(114, 33, 230, 0.4)'
   },
   {
     icon: <FiCode className="text-2xl" />,
     title: 'Web Development',
     description: 'Building responsive and performant websites using modern technologies and best practices.',
-    colorClass: 'bg-green-gradient'
+    colorClass: 'bg-green-gradient',
+    spotlightColor: 'rgba(0, 207, 149, 0.4)'
   },
   {
     icon: <FiDatabase className="text-2xl" />,
     title: 'Database Design and Integration',
     description: 'Design efficient, scalable database structures and integrate them seamlessly with your applications.',
-    colorClass: 'bg-yellow-gradient'
+    colorClass: 'bg-yellow-gradient',
+    spotlightColor: 'rgba(255, 197, 111, 0.4)'
   },
   {
     icon: <FiCloud className="text-2xl" />,
     title: 'Deployment and Hosting',
     description: 'Deploy fast and reliable web applications with smooth CI/CD setup, domain configuration, and performance optimization',
-    colorClass: 'bg-orange-gradient'
+    colorClass: 'bg-orange-gradient',
+    spotlightColor: 'rgba(255, 138, 86, 0.4)'
   },
 ];
 
@@ -100,21 +106,30 @@ export default function About() {
             <div className="space-y-6 mb-8">
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-medium text-xl mb-2">500+</h4>
-                  <p className="text-secondary">DSA Questions Solved</p>
+                  <h4 className="font-medium text-xl mb-2">
+                    <CountUp from={0} to={692} duration={1.5} separator="," className="text-xl" />
+                  </h4>
+                  <p className="text-secondary">Questions Solved</p>
                 </div>
                 <div>
-                  <h4 className="font-medium text-xl mb-2">30+</h4>
-                  <p className="text-secondary">Completed Projects</p>
+                  <h4 className="font-medium text-xl mb-2">
+                    <CountUp from={0} to={491} duration={1.5} separator="," className="text-xl" />
+                  </h4>
+                  <p className="text-secondary">Contributions</p>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <h4 className="font-medium text-xl mb-2">3 Years</h4>
+                  <h4 className="font-medium text-xl mb-2">
+                    <CountUp from={0} to={1} duration={1} className="text-xl" />
+                    <span className="ml-2">Year</span>
+                  </h4>
                   <p className="text-secondary">Experience</p>
                 </div>
                 <div>
-                  <h4 className="font-medium text-xl mb-2">12+</h4>
+                  <h4 className="font-medium text-xl mb-2">
+                    <CountUp from={0} to={12} duration={1} className="text-xl" />
+                  </h4>
                   <p className="text-secondary">Achievement</p>
                 </div>
               </div>
@@ -152,20 +167,17 @@ export default function About() {
           </motion.h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
-              <motion.div
+              <SpotlightCard
                 key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-card-bg p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                spotlightColor={service.spotlightColor}
+                className="shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white mb-4 ${service.colorClass}`}>
                   {service.icon}
                 </div>
                 <h4 className="heading text-xl mb-2">{service.title}</h4>
                 <p className="text-secondary">{service.description}</p>
-              </motion.div>
+              </SpotlightCard>
             ))}
           </div>
         </div>

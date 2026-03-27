@@ -156,7 +156,7 @@ ${formData.message}
                   <div className="ml-4">
                     <h4 className="font-medium mb-1">Location</h4>
                     <p className="text-secondary">
-                      San Francisco, California
+                      New Delhi, India
                     </p>
                   </div>
                 </div>

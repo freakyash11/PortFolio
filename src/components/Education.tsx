@@ -10,26 +10,32 @@ const educationData = [
     institution: 'Bhagwan Parshuram Institute of Technology',
     degree: 'B. Tech',
     stream: 'Electronics and Communication Engineering',
-    percentage: '7.03 CGPA'
+    percentage: '7.32 CGPA'
   },
   {
     period: '2022',
     institution: 'Bharatiya Vidya Bhavan',
     degree: 'Senior Secondary',
-    percentage: '83.33%',
+    percentage: '83.8%',
     stream: 'Science'
   },
   {
     period: '2020',
     institution: 'Bhartiya Vidya Bhavan',
     degree: 'High School',
-    percentage: '86.66%'
+    percentage: '88.2%'
   }
 ];
 
 const workData = [
   {
-    period: 'Jan 2025 - Present',
+    period: 'Jul 2025 - Oct 2025',
+    company: 'SaralGroups',
+    position: 'Software Developer Intern',
+    techstack: 'ReactJS, Strapi, GraphQL, Tailwind CSS, Git, Github'
+  },
+  {
+    period: 'Jan 2025 - Jul 2025',
     company: 'SaralTech',
     position: 'Software Developer Intern',
     techstack: 'CSS, ReactJS, NodeJS, MongoDB, ExpressJS, Tailwind CSS, Bootstrap, Git, Github'
